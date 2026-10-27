@@ -20,3 +20,47 @@ for()
 
     return 0;
 }
+________________________________
+#include <iostream> 
+using namespace std;
+
+char mapa[10][10];
+
+void pokaz_mape(){
+    for(int x=0; x<10; x++){
+      for(int y=0; y<10; y++){
+            cout<<mapa[y][x];
+           }
+           cout<<endl;
+    }
+}
+ 
+int main(){
+    char ruch = ' ';
+    int posX = 0;
+    int posY = 0;
+    for(int x=0; x<10; x++){
+      for(int y=0; y<10; y++){
+            mapa[y][x]= '_';
+           }
+    }
+    mapa[0][0] = '8';
+    pokaz_mape();
+    while(true){
+        cin>>ruch;
+        mapa[posY][posX]= '_';
+        switch(ruch){
+            case 'a': mapa[posY-1][posX] = '8'; posY -= 1;
+            break;
+            case 'd': mapa[posY+1][posX] = '8'; posY += 1;
+            break;
+            case 'w': mapa[posY][posX-1] = '8'; posX -= 1;
+            break;
+            case 's': mapa[posY][posX+1] = '8'; posX += 1;
+            break;
+        }
+        system("clear");
+        pokaz_mape();
+    }
+      return 0;
+}
